@@ -1,0 +1,5 @@
+number4digits = input('please type the number')
+print('the unit is', number4digits[3])
+print('the ten is', number4digits[2])
+print('the hundred is', number4digits[1])
+print('the thousand is', number4digits[0])
