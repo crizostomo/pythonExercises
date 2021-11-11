@@ -1,6 +1,6 @@
-phrase = 'Pedro Alvarez Cabral'
-print('upper = ', phrase.upper())
-print('lower = ', phrase.lower())
-AmountOfLetters = phrase.split()
+name = str(input('Please type your name'))
+print('upper = ', name.upper())
+print('lower = ', name.lower())
+AmountOfLetters = name.split()
 print('First name contains: ', len(AmountOfLetters[0]))
-print(len(AmountOfLetters))
+print('Your full name has {} letters'.format(len(name)-name.count(' ')))
