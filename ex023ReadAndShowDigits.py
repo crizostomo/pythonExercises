@@ -1,5 +1,12 @@
-number4digits = input('please type the number')
-print('the unit is', number4digits[3])
-print('the ten is', number4digits[2])
-print('the hundred is', number4digits[1])
-print('the thousand is', number4digits[0])
+number4digits = int(input('please type the number'))
+
+unit = number4digits // 1 % 10
+ten = number4digits // 10 % 10
+hundred = number4digits // 100 % 10
+thousand = number4digits // 1000 % 10
+
+
+print('the unit is', format(unit))
+print('the ten is', format(ten))
+print('the hundred is', format(hundred))
+print('the thousand is', format(thousand))
