@@ -24,5 +24,16 @@ list = [num1, num2, num3]
 list.sort()
 print("The smallest number is", list[0], "and the highest number is", list[2])
 
+#smallest = num1
+#if num2<num1 and num2<num3:
+#    smallest = num2
+#if num3<num1 and num3<num2:
+#   smallest = num3
+
+#biggest = num1
+#if num2>num1 and num2>num3:
+#    biggest = num2
+#if num3>num1 and num3>num2:
+#   biggest = num3
 
 
