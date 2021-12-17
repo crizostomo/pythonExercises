@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/welcome', methods=["POST", "GET"])
 def home():
     print(request.data)
-    return "Hello, welcome to this page"
+    return "Hello, welcome to this page"+str(request.data)
 
 @app.route('/random', methods = ["POST", "GET"])
 def draw():
@@ -32,7 +32,7 @@ def data():
 
 #https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask
 #https://stackoverflow.com/questions/45385188/flask-cant-get-post-data-from-postman-or-web-page-but-work-in-python-request
-@app.route('/json-example', methods=['POST'])
+@app.route('/json-example', methods=["POST", "GET"])
 def json_example():
     request_data = request.get_json()
 
