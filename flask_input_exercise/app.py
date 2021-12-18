@@ -1,9 +1,12 @@
 from flask import Flask, request
 
+#Documentar de uma forma simplificado o que faz e como faz no readme
+#mudar as regras e explicar passo a passo como faz
+
 # create the Flask app
 app = Flask(__name__)
 
-@app.route('/query-example', methods = ["POST", "GET"])
+@app.route('/query-example', methods = ["POST", "GET"]) #query-example?language=Python&framework=Flask&website=DigitalOcean
 def query_example():
     language = request.args.get('language')
 
@@ -20,7 +23,7 @@ def query_example():
 
 @app.route('/form-example', methods=['GET', 'POST'])
 def form_example():
-    # handle the POST request
+    # handle the POST request = receber
     if request.method == 'POST':
         name = request.form.get('name')
         age = request.form.get('age')
