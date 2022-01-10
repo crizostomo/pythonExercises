@@ -1,16 +1,16 @@
-from cpf_cnpj import Document
+import requests
+from postCode_access import searchAddress
 
-#https://sourcemaking.com/design_patterns/factory_method
+postCode = "01001000"
+object_post_code = searchAddress(postCode)
+#print(object_post_code)
 
-#Search packages inside pypi
+#r = requests.get("https://viacep.com.br/ws/01001000/json/")
+#print(type(r.text))
+#print(r.json())
+#print(r.json()['bairro'])
 
-#cpf = "12345678901"
-#object_cpf = CPF(cpf)
+bairro, cidade, uf = object_post_code.access_via_post_code()
 
-#print(object_cpf)
-example = "39228927879"
-#cpf_one = CpF("")
-#print(cpf_one)
+print(bairro, cidade, uf)
 
-document = Document.create_document(example)
-print(document)
