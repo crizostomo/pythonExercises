@@ -1,13 +1,32 @@
-import sys
+from Alura_Exercises.auction_test.exceptions import InvalidBid
+
 
 class User:
 
-    def __init__(self, name):
+    def __init__(self, name, wallet):
         self.__name = name
+        self.__wallet = wallet
+
+    def input_bid(self, auction, value):
+        if not self._value_is_valid(value):
+            raise InvalidBid("It cannot to input bid")
+
+        value = Bid(self, value)
+        auction.input(Bid)
+
+        self.__wallet -= value
 
     @property
     def name(self):
         return self.__name
+
+    @property
+    def wallet (self):
+        return self.__wallet
+
+    def _value_is_valid(self, value):
+        return value <= self.__wallet
+
 
 class Bid:
 
@@ -20,23 +39,39 @@ class Auction:
     def __init__(self, description):
         self.description = description
         self.__bids = []
-        self.highest_bid = sys.float_info.min
-        self.lowest_bid = sys.float_info.max
+        self.highest_bid = 0
+        self.lowest_bid = 0
 
     def input(self, bid: Bid):
-        if not self.__bids or self.__bids[-1].user != bid.user:
-            if bid.value > self.highest_bid:
-                self.highest_bid = bid.value
-            if bid.value < self.lowest_bid:
+        if self._bid_is_valid(bid):
+            if not self._has_bids():
                 self.lowest_bid = bid.value
 
+            self.highest_bid = bid.value
+
             self.__bids.append(bid)
-        else:
-            raise ValueError("The same user cannot input two followed bids")
+
 
     @property
     def bids(self):
         return self.__bids[:]
+
+    def _has_bids(self):
+        return self.__bids
+
+    def _different_users(self, bid):
+        if self.__bids[-1].user != bid.user:
+            return True
+        raise InvalidBid("The same user cannot input two followed bids")
+
+    def _value_higher_than_previous(self, bid):
+        if bid.value > self.__bids[-1].value:
+            return True
+        raise InvalidBid("The value must be higher than the previous one")
+
+    def _bid_is_valid(self, bid):
+        return not self.__bids or (self._different_users(bid) and
+                                   self._value_higher_than_previous(bid))
 
 
 

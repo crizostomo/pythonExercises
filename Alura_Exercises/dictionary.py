@@ -20,6 +20,7 @@ for x in 'Diogo':
 
 text1 = "Hello, good luck in programming in Python my friend"
 print(Counter(text1))
+
 shows1 = Counter(text1.lower())
 total_characters = sum(shows1.values())
 for letter, frequency in shows1.items():
